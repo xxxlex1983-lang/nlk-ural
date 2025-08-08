@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>НЛК-Урал — Строительство и благоустройство</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+        header, footer { background: #222; color: #fff; text-align: center; padding: 20px; }
+        section { padding: 40px 20px; max-width: 1000px; margin: auto; background: #fff; margin-bottom: 20px; border-radius: 10px; }
+        h2 { border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #111; }
+        ul { padding-left: 20px; }
+        .slider { display: flex; overflow-x: auto; gap: 10px; scroll-snap-type: x mandatory; padding-top: 20px; }
+        .slider img { height: 300px; flex-shrink: 0; scroll-snap-align: start; border-radius: 8px; }
+        form { display: flex; flex-direction: column; gap: 10px; max-width: 500px; margin: auto; }
+        input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        button { background-color: #0077cc; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ООО НЛК «Урал»</h1>
+    <p>Качество в каждом проекте — от асфальта до отделки</p>
+</header>
+
+<section>
+    <h2>О нас</h2>
+    <p>НЛК «Урал» — это надёжный партнёр в сфере строительных и дорожно-отделочных работ. Мы выполняем задачи любой сложности строго в сроки, без задержек и с гарантией качества.</p>
+</section>
+
+<section>
+    <h2>Наши услуги</h2>
+    <ul>
+        <li>Асфальтирование и дорожное строительство</li>
+        <li>Земляные и бетонные работы</li>
+        <li>Промышленное и гражданское строительство</li>
+        <li>Отделка и благоустройство территорий</li>
+        <li>Укладка щебня, песка, бордюров</li>
+        <li>Монтаж временных и постоянных покрытий</li>
+        <li>Демонтаж и расчистка площадок</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Портфолио — Ход выполнения работ</h2>
+    <div class="slider">
+        <img src="images/IMG_7788.jpeg" alt="Фото 1">
+    </div>
+</section>
+
+<section>
+    <h2>Оставить заявку</h2>
+    <form action="mailto:pahapara@yandex.ru" method="POST" enctype="text/plain">
+        <input type="text" name="ФИО" placeholder="Ваше ФИО" required>
+        <input type="tel" name="Телефон" placeholder="Номер телефона" required>
+        <textarea name="Комментарий" placeholder="Опишите вашу задачу" rows="4" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+
+<footer>
+    <p>📞 +7 (922) 165-06-50 | +7 (922) 200-17-48</p>
+    <p>✉️ pahapara@yandex.ru</p>
+</footer>
+
+</body>
+</html>
