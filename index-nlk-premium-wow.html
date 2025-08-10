@@ -1,0 +1,236 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ООО НЛК «Урал» — Строительство, благоустройство, монтаж</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1720;
+  --card:#0b1220;
+  --accent:#ffb74d;
+  --muted:#9aa4b2;
+  --glass: rgba(255,255,255,0.04);
+  --radius:14px;
+  --max-width:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(180deg,#0c1016 0%,#071018 100%);
+  color:#e6eef6;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+.topbar{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(8,12,18,0.8);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  animation:fadeDown 0.8s ease;
+}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.container{max-width:var(--max-width);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:50px;height:50px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff8a4d);display:flex;align-items:center;justify-content:center;font-weight:800;color:#08101a;font-size:16px}
+.brand h1{font-size:16px}
+.brand p{font-size:12px;color:var(--muted)}
+nav.desktop-nav{display:flex;gap:18px}
+nav a{color:var(--muted);font-weight:600;padding:8px;border-radius:8px;font-size:14px;transition:all .3s}
+nav a:hover{color:#fff;background:var(--glass);transform:translateY(-2px)}
+.btn{background:linear-gradient(90deg,var(--accent),#ff9a4d);padding:10px 14px;border-radius:10px;font-weight:700;color:#08101a;transition:all .3s}
+.btn:hover{box-shadow:0 0 20px rgba(255,183,77,0.4);transform:translateY(-2px)}
+/* Burger styles */
+.burger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.burger span{display:block;width:24px;height:3px;background:#fff;border-radius:2px}
+.mobile-menu{
+  position:fixed;top:0;right:-100%;width:70%;height:100%;
+  background:#0c1016;transition:0.3s;padding:20px;display:flex;flex-direction:column;gap:14px;
+  z-index:1500;
+}
+.mobile-menu.open{right:0}
+.mobile-menu a{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);color:#fff;font-weight:600}
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:20px;max-width:var(--max-width);margin:20px auto;padding:20px;align-items:center}
+.hero-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);padding:20px;border-radius:var(--radius);opacity:0;transform:translateY(20px);transition:all .8s ease}
+.hero h2{font-size:32px;margin-bottom:10px}
+.hero p{color:var(--muted)}
+.hero-cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.hero-visual{border-radius:14px;overflow:hidden;background-size:cover;background-position:center;min-height:300px;transform:scale(1.05);transition:transform 1s ease}
+.hero-visual.parallax{transform:scale(1.1)}
+/* Sections */
+.panel{max-width:var(--max-width);margin:20px auto;padding:20px;background:var(--card);border-radius:12px;opacity:0;transform:translateY(20px);transition:all .8s ease}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.service{background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.03);padding:14px;border-radius:10px;transition:all .3s}
+.service:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.4)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.portfolio-grid img{width:100%;height:180px;object-fit:cover;border-radius:10px;cursor:pointer;transition:all .3s}
+.portfolio-grid img:hover{transform:scale(1.03);box-shadow:0 8px 20px rgba(0,0,0,0.5)}
+/* Reviews section enhancements */
+#reviews .portfolio-grid img{
+  border:2px solid rgba(255,255,255,0.06);
+  box-shadow:0 8px 30px rgba(0,0,0,0.6);
+}
+#reviews .portfolio-grid img:hover{
+  transform:scale(1.02);
+  box-shadow:0 12px 40px rgba(0,0,0,0.8);
+}
+/* Contact */
+.contact-card{padding:18px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+button.submit{width:100%;padding:12px;border:none;border-radius:10px;background:var(--accent);font-weight:800;color:#08101a;cursor:pointer;transition:all .3s}
+button.submit:hover{box-shadow:0 0 20px rgba(255,183,77,0.4);transform:translateY(-2px)}
+/* Lightbox */
+.lightbox.open{opacity:1;pointer-events:auto}
+/* iPhone specific refinements */
+@media (max-width:430px){
+  body{font-size:16px}
+  .container{padding:12px}
+  .hero-card{padding:18px}
+  .hero h2{font-size:24px !important;line-height:1.2}
+  .hero-cta .primary, .btn{padding:12px 16px;font-size:16px}
+  nav.desktop-nav{display:none}
+  .burger{display:flex}
+  .portfolio-grid{grid-template-columns:1fr;gap:10px}
+  .portfolio-grid img{height:auto;max-height:260px}
+  input,textarea{font-size:16px;padding:12px}
+  .submit{font-size:16px;padding:14px}
+  .mobile-menu{width:80%}
+}
+@media (min-width:431px) and (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="container">
+    <div class="brand">
+      <div class="logo">НЛК</div>
+      <div>
+        <h1>ООО НЛК «Урал»</h1>
+        <p>Строительство • Благоустройство • Монтаж</p>
+      </div>
+    </div>
+    <nav class="desktop-nav">
+      <a href="#services">Услуги</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Заявка</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Услуги</a>
+  <a href="#portfolio" onclick="toggleMenu()">Портфолио</a>
+  <a href="#reviews" onclick="toggleMenu()">Отзывы</a>
+  <a href="#contact" onclick="toggleMenu()">Оставить заявку</a>
+</div>
+<header class="hero">
+  <div class="hero-card reveal">
+    <h2>Качественные дороги и благоустройство</h2>
+    <p>Асфальтирование, земляные, бетонные работы, монтаж металлоконструкций.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn">Заказать расчёт</a>
+      <a href="#portfolio" style="color:var(--accent)">Посмотреть работы</a>
+    </div>
+  </div>
+  <div class="hero-visual" style="background-image:url('images/IMG_8274.jpeg')"></div>
+</header>
+<main>
+<section id="services" class="panel reveal">
+  <h3>Наши услуги</h3>
+  <div class="services">
+    <div class="service"><h4>Асфальтирование</h4><p>От подготовки основания до уплотнения покрытия.</p></div>
+    <div class="service"><h4>Земляные и бетонные работы</h4><p>Прочные и точные решения.</p></div>
+    <div class="service"><h4>Благоустройство</h4><p>Красиво и надёжно: дорожки, площадки, озеленение.</p></div>
+    <div class="service"><h4>Монтаж металлоконструкций</h4><p>Каркасы, опоры, ограждения.</p></div>
+  </div>
+</section>
+<section id="portfolio" class="panel reveal">
+  <h3>Портфолио</h3>
+  <div class="portfolio-grid">
+    <img src="images/IMG_7788.jpeg" alt="Работа 1" data-full="images/IMG_7788.jpeg">
+    <img src="images/IMG_7872.jpeg" alt="Работа 2" data-full="images/IMG_7872.jpeg">
+    <img src="images/IMG_7875.jpeg" alt="Работа 3" data-full="images/IMG_7875.jpeg">
+  </div>
+</section>
+<section id="reviews" class="panel reveal">
+  <h3>Отзывы и благодарственные письма</h3>
+  <p style="color:var(--muted);margin-top:6px">Нам доверяют крупные компании — вот некоторые благодарственные письма в наш адрес:</p>
+  <div class="portfolio-grid" style="margin-top:14px">
+    <div>
+      <img src="images/IMG_8340.jpeg" alt="Благодарственное письмо Лемана ПРО" data-full="images/IMG_8340.jpeg">
+      <div class="meta" style="text-align:center;margin-top:6px;color:var(--muted)">ООО «Лемана ПРО» — 2024 г.</div>
+    </div>
+    <div>
+      <img src="images/IMG_8341.jpeg" alt="Благодарственное письмо ВСПМО-Строитель" data-full="images/IMG_8341.jpeg">
+      <div class="meta" style="text-align:center;margin-top:6px;color:var(--muted)">АО «ВСПМО-Строитель» — 2024 г.</div>
+    </div>
+  </div>
+</section>
+<section id="contact" class="panel reveal">
+  <h3>Оставить заявку</h3>
+  <form class="contact-card">
+    <input type="text" placeholder="Ваше имя" required>
+    <input type="tel" placeholder="Телефон" required>
+    <textarea rows="4" placeholder="Описание задачи" required></textarea>
+    <button type="submit" class="submit">Отправить</button>
+  </form>
+</section>
+</main>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;pointer-events:none;transition:all .25s;">
+  <img src="" alt="Просмотр фото" style="max-width:90%;max-height:90%;border-radius:8px">
+</div>
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+// Lightbox
+document.querySelectorAll('.portfolio-grid img').forEach(img => {
+  img.addEventListener('click', e => {
+    const lb = document.getElementById('lightbox');
+    const big = lb.querySelector('img');
+    big.src = img.dataset.full || img.src;
+    lb.classList.add('open');
+  });
+});
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+// Reveal animations
+const reveals = document.querySelectorAll('.reveal');
+function revealOnScroll(){
+  const windowHeight = window.innerHeight;
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < windowHeight - 60){
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+// Parallax hero
+window.addEventListener('scroll', ()=>{
+  const heroVisual = document.querySelector('.hero-visual');
+  let offset = window.pageYOffset;
+  heroVisual.style.transform = `scale(${1.05 + offset/5000})`;
+});
+</script>
+</body>
+</html>
